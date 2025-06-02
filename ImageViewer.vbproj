@@ -11,8 +11,9 @@
     <Authors>Sebastian Welter</Authors>
     <Product>Simple $(AssemblyName)</Product>
     <Description>Open source simple fast image viewer</Description>
-    <Copyright>Copyright (c) 2020-2025</Copyright>
+    <Copyright>Copyright (c) 2020-2025 Sebastian Welter</Copyright>
     <PackageIcon>image-x-generic.png</PackageIcon>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="image-x-generic.ico" />
+    <Content Include="$(GPLICO)\ico\48x48\mimetypes\image-x-generic.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Pictures\GPLIcons\png\48x48\mimetypes\image-x-generic.png">
+    <None Include="$(GPLICO)\png\48x48\mimetypes\image-x-generic.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

@@ -69,7 +69,7 @@ Partial Class Form1
         ToolStrip1.Location = New Point(0, 0)
         ToolStrip1.Name = "ToolStrip1"
         ToolStrip1.RenderMode = ToolStripRenderMode.System
-        ToolStrip1.Size = New Size(1282, 39)
+        ToolStrip1.Size = New Size(1602, 41)
         ToolStrip1.TabIndex = 0
         ' 
         ' ToolStripFILE
@@ -78,60 +78,61 @@ Partial Class Form1
         ToolStripFILE.Image = CType(resources.GetObject("ToolStripFILE.Image"), Image)
         ToolStripFILE.ImageTransparentColor = Color.Magenta
         ToolStripFILE.Name = "ToolStripFILE"
-        ToolStripFILE.Size = New Size(78, 36)
+        ToolStripFILE.Size = New Size(88, 36)
         ToolStripFILE.Text = "File"
         ' 
         ' mnuOpen
         ' 
         mnuOpen.Name = "mnuOpen"
         mnuOpen.ShortcutKeys = Keys.Control Or Keys.O
-        mnuOpen.Size = New Size(224, 26)
+        mnuOpen.Size = New Size(270, 34)
         mnuOpen.Text = "Open..."
         ' 
         ' ToolStripSeparator1
         ' 
         ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(221, 6)
+        ToolStripSeparator1.Size = New Size(267, 6)
         ' 
         ' mnuSave
         ' 
         mnuSave.Name = "mnuSave"
-        mnuSave.Size = New Size(224, 26)
+        mnuSave.Size = New Size(270, 34)
         mnuSave.Text = "Save"
         ' 
         ' mnuSaveAs
         ' 
         mnuSaveAs.Name = "mnuSaveAs"
         mnuSaveAs.ShortcutKeys = Keys.Control Or Keys.S
-        mnuSaveAs.Size = New Size(224, 26)
+        mnuSaveAs.Size = New Size(270, 34)
         mnuSaveAs.Text = "Save as..."
         ' 
         ' ToolStripMenuItem1
         ' 
         ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(221, 6)
+        ToolStripMenuItem1.Size = New Size(267, 6)
         ' 
         ' mnuDelete
         ' 
         mnuDelete.Name = "mnuDelete"
-        mnuDelete.Size = New Size(224, 26)
+        mnuDelete.ShortcutKeys = Keys.Control Or Keys.Delete
+        mnuDelete.Size = New Size(270, 34)
         mnuDelete.Text = "Delete"
         ' 
         ' ToolStripSeparator6
         ' 
         ToolStripSeparator6.Name = "ToolStripSeparator6"
-        ToolStripSeparator6.Size = New Size(221, 6)
+        ToolStripSeparator6.Size = New Size(267, 6)
         ' 
         ' mnuExit
         ' 
         mnuExit.Name = "mnuExit"
-        mnuExit.Size = New Size(224, 26)
+        mnuExit.Size = New Size(270, 34)
         mnuExit.Text = "Exit"
         ' 
         ' ToolStripSeparator5
         ' 
         ToolStripSeparator5.Name = "ToolStripSeparator5"
-        ToolStripSeparator5.Size = New Size(6, 39)
+        ToolStripSeparator5.Size = New Size(6, 41)
         ' 
         ' ToolStripEDIT
         ' 
@@ -139,7 +140,7 @@ Partial Class Form1
         ToolStripEDIT.Image = CType(resources.GetObject("ToolStripEDIT.Image"), Image)
         ToolStripEDIT.ImageTransparentColor = Color.Magenta
         ToolStripEDIT.Name = "ToolStripEDIT"
-        ToolStripEDIT.Size = New Size(81, 36)
+        ToolStripEDIT.Size = New Size(92, 36)
         ToolStripEDIT.Text = "Edit"
         ' 
         ' mnuRotateLEFT
@@ -147,7 +148,7 @@ Partial Class Form1
         mnuRotateLEFT.Image = CType(resources.GetObject("mnuRotateLEFT.Image"), Image)
         mnuRotateLEFT.Name = "mnuRotateLEFT"
         mnuRotateLEFT.ShortcutKeys = Keys.Control Or Keys.L
-        mnuRotateLEFT.Size = New Size(222, 26)
+        mnuRotateLEFT.Size = New Size(269, 34)
         mnuRotateLEFT.Text = "Rotate left"
         ' 
         ' mnuRotateRIGHT
@@ -155,26 +156,26 @@ Partial Class Form1
         mnuRotateRIGHT.Image = CType(resources.GetObject("mnuRotateRIGHT.Image"), Image)
         mnuRotateRIGHT.Name = "mnuRotateRIGHT"
         mnuRotateRIGHT.ShortcutKeys = Keys.Control Or Keys.R
-        mnuRotateRIGHT.Size = New Size(222, 26)
+        mnuRotateRIGHT.Size = New Size(269, 34)
         mnuRotateRIGHT.Text = "Rotate right"
         ' 
         ' ToolStripMenuItem2
         ' 
         ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        ToolStripMenuItem2.Size = New Size(219, 6)
+        ToolStripMenuItem2.Size = New Size(266, 6)
         ' 
         ' mnuCrop
         ' 
         mnuCrop.Image = CType(resources.GetObject("mnuCrop.Image"), Image)
         mnuCrop.Name = "mnuCrop"
         mnuCrop.ShortcutKeys = Keys.Control Or Keys.Y
-        mnuCrop.Size = New Size(222, 26)
+        mnuCrop.Size = New Size(269, 34)
         mnuCrop.Text = "Crop"
         ' 
         ' ToolStripSeparator4
         ' 
         ToolStripSeparator4.Name = "ToolStripSeparator4"
-        ToolStripSeparator4.Size = New Size(6, 39)
+        ToolStripSeparator4.Size = New Size(6, 41)
         ' 
         ' ToolStripVIEW
         ' 
@@ -182,7 +183,7 @@ Partial Class Form1
         ToolStripVIEW.Image = CType(resources.GetObject("ToolStripVIEW.Image"), Image)
         ToolStripVIEW.ImageTransparentColor = Color.Magenta
         ToolStripVIEW.Name = "ToolStripVIEW"
-        ToolStripVIEW.Size = New Size(87, 36)
+        ToolStripVIEW.Size = New Size(99, 36)
         ToolStripVIEW.Text = "View"
         ' 
         ' mnuView_Autosize
@@ -190,13 +191,13 @@ Partial Class Form1
         mnuView_Autosize.Checked = True
         mnuView_Autosize.CheckState = CheckState.Checked
         mnuView_Autosize.Name = "mnuView_Autosize"
-        mnuView_Autosize.Size = New Size(174, 26)
+        mnuView_Autosize.Size = New Size(210, 34)
         mnuView_Autosize.Text = "Autosize"
         ' 
         ' mnuView_Orig
         ' 
         mnuView_Orig.Name = "mnuView_Orig"
-        mnuView_Orig.Size = New Size(174, 26)
+        mnuView_Orig.Size = New Size(210, 34)
         mnuView_Orig.Text = "Original size"
         ' 
         ' mnuFullscreen
@@ -211,7 +212,7 @@ Partial Class Form1
         ' ToolStripSeparator2
         ' 
         ToolStripSeparator2.Name = "ToolStripSeparator2"
-        ToolStripSeparator2.Size = New Size(6, 39)
+        ToolStripSeparator2.Size = New Size(6, 41)
         ' 
         ' mnuCopy
         ' 
@@ -234,7 +235,7 @@ Partial Class Form1
         ' ToolStripSeparator3
         ' 
         ToolStripSeparator3.Name = "ToolStripSeparator3"
-        ToolStripSeparator3.Size = New Size(6, 39)
+        ToolStripSeparator3.Size = New Size(6, 41)
         ' 
         ' mnuNavigatePrev
         ' 
@@ -260,16 +261,17 @@ Partial Class Form1
         ' 
         StatusStrip1.ImageScalingSize = New Size(20, 20)
         StatusStrip1.Items.AddRange(New ToolStripItem() {lblStatus, lblfilename, lblFilesInDir})
-        StatusStrip1.Location = New Point(0, 823)
+        StatusStrip1.Location = New Point(0, 1029)
         StatusStrip1.Name = "StatusStrip1"
-        StatusStrip1.Size = New Size(1282, 26)
+        StatusStrip1.Padding = New Padding(1, 0, 18, 0)
+        StatusStrip1.Size = New Size(1602, 32)
         StatusStrip1.TabIndex = 1
         StatusStrip1.Text = "StatusStrip1"
         ' 
         ' lblStatus
         ' 
         lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(1107, 20)
+        lblStatus.Size = New Size(1394, 25)
         lblStatus.Spring = True
         lblStatus.Text = "Ready"
         lblStatus.TextAlign = ContentAlignment.MiddleLeft
@@ -277,14 +279,14 @@ Partial Class Form1
         ' lblfilename
         ' 
         lblfilename.Name = "lblfilename"
-        lblfilename.Size = New Size(61, 20)
+        lblfilename.Size = New Size(71, 25)
         lblfilename.Tag = "(no file)"
         lblfilename.Text = "(no file)"
         ' 
         ' lblFilesInDir
         ' 
         lblFilesInDir.Name = "lblFilesInDir"
-        lblFilesInDir.Size = New Size(99, 20)
+        lblFilesInDir.Size = New Size(118, 25)
         lblFilesInDir.Tag = "(no directory)"
         lblFilesInDir.Text = "(no directory)"
         ' 
@@ -292,8 +294,9 @@ Partial Class Form1
         ' 
         pic.Dock = DockStyle.Fill
         pic.Location = New Point(0, 0)
+        pic.Margin = New Padding(4, 4, 4, 4)
         pic.Name = "pic"
-        pic.Size = New Size(1282, 784)
+        pic.Size = New Size(1602, 988)
         pic.TabIndex = 2
         pic.TabStop = False
         ' 
@@ -303,21 +306,23 @@ Partial Class Form1
         Panel1.BackColor = Color.Black
         Panel1.Controls.Add(pic)
         Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(0, 39)
+        Panel1.Location = New Point(0, 41)
+        Panel1.Margin = New Padding(4, 4, 4, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1282, 784)
+        Panel1.Size = New Size(1602, 988)
         Panel1.TabIndex = 3
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1282, 849)
+        ClientSize = New Size(1602, 1061)
         Controls.Add(Panel1)
         Controls.Add(StatusStrip1)
         Controls.Add(ToolStrip1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         KeyPreview = True
+        Margin = New Padding(4, 4, 4, 4)
         Name = "Form1"
         Text = "Simple Image Viewer"
         ToolStrip1.ResumeLayout(False)

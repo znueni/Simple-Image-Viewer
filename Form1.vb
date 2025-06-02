@@ -3,6 +3,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Security.Policy
+Imports System.Runtime.Intrinsics.X86
 
 '<Assembly: AssemblyTitle("AWSID")>
 '<Assembly: AssemblyDescription("")>
@@ -18,7 +19,8 @@ Public Class Form1
 
     Private FilenameLoaded As String, FilesInDirectory As New List(Of String)
     Private Const EXTENSIONS = ".jpg.jpeg.gif.png.bmp"
-    Private OriginalImg As Image, ScaleFactor As Single
+    Private Const MINIMUMWIDTH As Integer = 600
+    Private OriginalImg As Image
 
     Private Sub ImageLoadRefresh()
         Dim Avail As Rectangle = Screen.GetWorkingArea(Me)
@@ -34,6 +36,9 @@ Public Class Form1
                 OrigWidth = True
             Else : Me.Width = Avail.Width - 200
             End If
+            If Me.Width < MINIMUMWIDTH Then
+                OrigWidth = False : Me.Width = MINIMUMWIDTH
+            End If
         End If
         pic.Image = Nothing
         If mnuView_Autosize.Checked Then
@@ -46,20 +51,18 @@ Public Class Form1
             pic.SizeMode = PictureBoxSizeMode.Normal
         End If
         pic.Image = OriginalImg
-        ScaleFactor = pic.Width / OriginalImg.Width
         If FilenameLoaded > "" Then lblfilename.Text = Path.GetFileName(FilenameLoaded) Else lblfilename.Text = lblfilename.Tag
     End Sub
 
     Private Sub ImageLoadFile(fn As String)
         Try
-            OriginalImg = Image.FromFile(fn)
+            OriginalImg = Image.FromFile(fn).Clone()
             ImageLoadRefresh()
             FilenameLoaded = fn
         Catch ex As Exception
             MsgBox("Unable to load picture  file " & fn & vbCrLf & vbCrLf & ex.GetType().Name & ": " & ex.Message, MsgBoxStyle.Critical)
             Exit Sub
         End Try
-        Me.Text = Path.GetFileName(fn) & " - Simple Image Viewer"
         RefreshNavigations()
     End Sub
 
@@ -72,7 +75,10 @@ Public Class Form1
                 If f.FullName.Equals(Path.GetFullPath(FilenameLoaded)) Then posOfMyFile = FilesInDirectory.IndexOf(f.FullName)
             Next
             lblFilesInDir.Text = $"{FilesInDirectory.Count} images in directory"
-        Else : lblFilesInDir.Text = lblFilesInDir.Tag
+            Me.Text = Path.GetFileName(FilenameLoaded) & " - Simple Image Viewer"
+        Else
+            lblFilesInDir.Text = lblFilesInDir.Tag
+            Me.Text = "Simple Image Viewer"
         End If
         mnuNavigateNext.Enabled = FilesInDirectory.Count > 1 AndAlso posOfMyFile < FilesInDirectory.Count - 1
         mnuNavigatePrev.Enabled = FilesInDirectory.Count > 1 AndAlso posOfMyFile > 0
@@ -136,11 +142,22 @@ Public Class Form1
     End Sub
 
     Private Function GetSelectedImage() As Bitmap
-        Dim srcRect As New Rectangle(Mark.X / ScaleFactor, Mark.Y / ScaleFactor, Mark.Width / ScaleFactor, Mark.Height / ScaleFactor)
+        Dim srcRect As Rectangle
+        If pic.SizeMode = PictureBoxSizeMode.Zoom Or pic.SizeMode = PictureBoxSizeMode.StretchImage Then
+            Dim ImageRect As Rectangle = pic.GetType().GetMethod("ImageRectangleFromSizeMode", BindingFlags.NonPublic Or BindingFlags.Instance).Invoke(pic, New Object() {pic.SizeMode})
+            Dim cx As Double = pic.Image.Width / ImageRect.Width
+            Dim cy As Double = pic.Image.Height / ImageRect.Height
+            Dim r2 As Rectangle = Rectangle.Intersect(ImageRect, Mark)
+            r2.Offset(-ImageRect.X, -ImageRect.Y)
+            srcRect = New Rectangle(r2.X * cx, r2.Y * cy, r2.Width * cx, r2.Height * cy)
+        Else
+            Dim ScaleFactor As Double = pic.Width / pic.Image.Width
+            srcRect = New Rectangle(Mark.X / ScaleFactor, Mark.Y / ScaleFactor, Mark.Width / ScaleFactor, Mark.Height / ScaleFactor)
+        End If
         Dim dstRect As New Rectangle(0, 0, srcRect.Width, srcRect.Height)
         Dim targetBmp As New Bitmap(dstRect.Width, dstRect.Height)
         Dim gr_dest As Graphics = Graphics.FromImage(targetBmp)
-        gr_dest.DrawImage(OriginalImg, dstRect, srcRect, GraphicsUnit.Pixel)
+        gr_dest.DrawImage(pic.Image, dstRect, srcRect, GraphicsUnit.Pixel)
         Return targetBmp
     End Function
 
@@ -297,7 +314,10 @@ Public Class Form1
             OriginalImg.Save(FilenameLoaded)
         Else
             Dim f As New SaveFileDialog() With {.Filter = "Images|" & EXTENSIONS.Replace(".", ";*.").TrimStart(";") & "|All|*.*", .FileName = FilenameLoaded}
-            If f.ShowDialog() = DialogResult.OK Then OriginalImg.Save(f.FileName)
+            If f.ShowDialog() = DialogResult.OK Then
+                OriginalImg.Save(f.FileName)
+                ImageLoadFile(f.FileName)
+            End If
         End If
     End Sub
 
